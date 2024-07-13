@@ -1,8 +1,8 @@
-from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, TextAreaField
-from wtforms.validators import DataRequired, Length
+from flask_wtf import FlaskForm
+from wtforms import StringField, TextAreaField, SubmitField
+from wtforms.validators import DataRequired
 
 class SubmitForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(max=20)])
-    message = TextAreaField('Message', validators=[DataRequired(), Length(max=100)])
-    recaptcha = RecaptchaField()
+    username = StringField('Username', validators=[DataRequired()])
+    message = TextAreaField('Message', validators=[DataRequired()])
+    submit = SubmitField('Submit')

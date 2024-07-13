@@ -3,7 +3,7 @@
 <div class="container">
   <br><br>
   <div class="row justify-content-sm-center">
-  <h1>View the r/learnpython Guest Book :)</h1>
+  <h1>View the r/learnpython Guest Book :</h1>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -12,13 +12,16 @@
       </tr>
     </thead>
     <tbody>
-        {% for row in cursor %}
-        <tr>
-            {% for item in row %}
-            <td>{{ item }}</td>
-            {% endfor %}
-         </tr>
-        {% endfor %}
+      {% for username, message in users %}
+          <tr>
+              <td>{{ username }}</td>
+              <td>{{ message }}</td>
+          </tr>
+      {% else %}
+          <tr>
+              <td colspan="2">No submissions found.</td>
+          </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>

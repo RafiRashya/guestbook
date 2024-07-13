@@ -1,15 +1,21 @@
-import sqlite3 as sql
+import mysql.connector as mysql
 
-def make_db():
-    '''Makes database that usernames and messages will be saved to.
-    '''
-    conn = sql.connect('database.db')
-    print('database created succesfully')
-    conn.execute('CREATE TABLE users (username TEXT, message TEXT)')
-    print('Table created succesfully')
+def make_db(host, user, password, database):
+    conn = mysql.connect(
+        host=host,
+        user=user,
+        password=password
+    )
+    cursor = conn.cursor()
+    cursor.execute(f'CREATE DATABASE IF NOT EXISTS {database}')
+    cursor.execute(f'USE {database}')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50),
+            message TEXT
+        )
+    ''')
+    conn.commit()
+    cursor.close()
     conn.close()
-
-if __name__ == '__main__':
-    make_db()
-
-
