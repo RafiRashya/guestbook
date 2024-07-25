@@ -1,0 +1,14 @@
+Usage: flask run [OPTIONS]
+Try 'flask run --help' for help.
+
+Error: While importing 'rgb', an ImportError was raised:
+
+Traceback (most recent call last):
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/cli.py", line 245, in locate_app
+    __import__(module_name)
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/rgb.py", line 1, in <module>
+    from create_db import make_db
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/create_db.py", line 1, in <module>
+    import mysql.connector as mysql
+ModuleNotFoundError: No module named 'mysql'
+
