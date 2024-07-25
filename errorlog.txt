@@ -61,3 +61,55 @@ Traceback (most recent call last):
   File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/authentication.py", line 190, in get_auth_plugin
     raise errors.NotSupportedError(
 mysql.connector.errors.NotSupportedError: Authentication plugin 'caching_sha2_password' is not supported
+Exception on /view [GET]
+Traceback (most recent call last):
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/connection_cext.py", line 705, in cmd_query
+    self._cmysql.query(
+_mysql_connector.MySQLInterfaceError: Table 'guestbook.users' doesn't exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/rgb.py", line 51, in view
+    cursor.execute('SELECT username, message FROM users')
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/cursor_cext.py", line 357, in execute
+    result = self._connection.cmd_query(
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/opentelemetry/context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/connection_cext.py", line 713, in cmd_query
+    raise get_mysql_exception(
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'guestbook.users' doesn't exist
+Exception on /submit [POST]
+Traceback (most recent call last):
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/connection_cext.py", line 705, in cmd_query
+    self._cmysql.query(
+_mysql_connector.MySQLInterfaceError: Table 'guestbook.users' doesn't exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/rgb.py", line 40, in submit
+    cursor.execute('INSERT INTO users (username, message) VALUES (%s, %s)', (form.username.data, form.message.data))
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/cursor_cext.py", line 357, in execute
+    result = self._connection.cmd_query(
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/opentelemetry/context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/connection_cext.py", line 713, in cmd_query
+    raise get_mysql_exception(
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'guestbook.users' doesn't exist

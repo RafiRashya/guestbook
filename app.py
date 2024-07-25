@@ -62,4 +62,4 @@ if __name__ == '__main__':
             password=app.config['MYSQL_PASSWORD'],
             database=app.config['MYSQL_DB']
         )
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=8080)
