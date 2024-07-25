@@ -12,3 +12,53 @@ Traceback (most recent call last):
     import mysql.connector as mysql
 ModuleNotFoundError: No module named 'mysql'
 
+/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/abstracts.py:130: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if group is 'connector_python':
+/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/optionfiles.py:98: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if group is 'connector_python':
+ * Serving Flask app 'rgb.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [25/Jul/2024 17:53:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2024 17:53:20] "GET /static/coding.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2024 17:53:20] "GET /static/background.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2024 17:53:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [25/Jul/2024 17:53:23] "GET /submit HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2024 17:53:23] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+127.0.0.1 - - [25/Jul/2024 17:54:46] "GET /submit HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2024 17:54:46] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+[2024-07-25 17:55:43,642] ERROR in app: Exception on /submit [POST]
+Traceback (most recent call last):
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/network.py", line 509, in open_connection
+    self.sock.connect(sockaddr)
+TimeoutError: [Errno 110] Connection timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/rgb.py", line 38, in submit
+    conn = get_db_connection()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/rgb.py", line 22, in get_db_connection
+    conn = mysql.connect(
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/abstracts.py", line 716, in connect
+    self._open_connection()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/connection.py", line 206, in _open_connection
+    self._socket.open_connection()
+  File "/home/rafirashya/Documents/virtual_host/my_flask_app/venv/lib/python3.10/site-packages/mysql/connector/network.py", line 511, in open_connection
+    raise errors.InterfaceError(
+mysql.connector.errors.InterfaceError: 2003: Can't connect to MySQL server on '192.168.100.114:3306' (110 Connection timed out)
+127.0.0.1 - - [25/Jul/2024 17:55:43] "[35m[1mPOST /submit HTTP/1.1[0m" 500 -

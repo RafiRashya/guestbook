@@ -11,9 +11,9 @@ file_handler.setLevel(WARNING)
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'your secret key goes here'  # ToDo replace this with your secret key
-app.config['MYSQL_HOST'] = '192.168.100.114'
-app.config['MYSQL_USER'] = 'kelompok4'
-app.config['MYSQL_PASSWORD'] = 'kelompok4'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'rafi'
+app.config['MYSQL_PASSWORD'] = '123'
 app.config['MYSQL_DB'] = 'guestbook'
 
 app.logger.addHandler(file_handler)
